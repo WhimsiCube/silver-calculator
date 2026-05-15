@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Silver weight calculator</title>
+<link src="assets/thumbnails/1.png" rel="icon">
+<link href="https://fonts.googleapis.com/css?family=Luckiest Guy" rel="stylesheet">
+<style>
+body{
+ text-align: center;
+ font-size: 50px;
+ background: #1f2f3f;
+ font-family: Luckiest Guy;
+ color: white;
+}
+.all{
+ font-family: Luckiest Guy;
+ color: white;
+ background: #2c3f52;
+ border: 2px solid #1d2b38;
+ min-width: 400px;
+ min-height: 100px;
+ font-size: 30px;
+}
+
+.all:hover{
+ transform: scale(1.05);
+}
+</style>
+</head>
+<body>
+<h1>Silver Weight Calculator</h1>
+<select class="all" id="input1">
+ <option value="0">SILVER PURITY</option>
+ <option value=".400">40% SILVER</option>
+ <option value=".700">70% SILVER</option>
+ <option value=".750">75% SILVER</option>
+ <option value=".800">80% SILVER</option>
+ <option value=".900">90% SILVER</option>
+ <option value=".925">92.5% STERLING</option>
+</select>
+<input class="all" id="input4" placeholder="Custom Purity" type="number" min="0.001" step="0.001" max="1.0">
+<select class="all" id="input3">
+ <option value="g">Grams</option>
+ <option value="oz">Ounces</option>
+</select>
+<br>
+<br>
+<input class="all" id="input2" placeholder="Coin Weight" type="number">
+<button class="all" onclick="yes()">Calculate</button>
+<br>
+<p id="output1"></p>
+<br><br>
+<select class="all" id="currency">
+<option value="CAD">Canadian Dollar $</option>
+<option value="USD">American Dollar $</option>
+<option value="GBP">Great British Pound £</option>
+<option value="EUR">Euro €</option>
+<option value="JPY">Japanese Yen ¥</option>
+<option value="AUD">Australian Dollar $</option>
+<option value="CHF">Swiss Franc ₣</option>
+<option value="PHP">Philippine Peso ₱</option>
+</select>
+<button onclick="site()" class="all">Check Value</button>
+<script>
+ let sum = 0;
+function yes() {
+ let pur = Number(document.getElementById("input1").value);
+ let pur2 = Number(document.getElementById("input4").value);
+ let purity;
+ let weight = Number(document.getElementById("input2").value);
+ let unit = document.getElementById("input3").value;
+ if(pur2 > 0){
+  purity = pur2
+  }else{
+  purity = pur
+  }
+
+ if(purity <= 0){
+  alert("Choose a purity")
+  }else{
+    if(purity > 1){
+     alert("Purity cannot be more than 100%")
+     }else{
+    if(weight <= 0){
+     alert("Enter a weight in " + unit)
+    }else{
+      sum = weight * purity
+     document.getElementById("output1").textContent = sum.toFixed(4) + " " + unit + " of  pure silver."
+   }
+  }
+ }
+}
+function site(){
+let unit = document.getElementById("input3").value;
+let cur = document.getElementById("currency").value
+if(unit === 'g'){
+  let sumA = sum / 28.35
+  if (sumA === 0){
+   alert("Please calculate a weight")
+  }else{
+  let URL = "https://www.xe.com/en-ca/currencyconverter/convert/?Amount=" + sumA + "&From=XAG&To=" + cur
+  window.open(URL)
+  }
+ }else{
+  if (sum === 0){
+   alert("Please calculate a weight")
+  }else{
+  let URL = "https://www.xe.com/en-ca/currencyconverter/convert/?Amount=" + sum + "&From=XAG&To=" + cur
+  window.open(URL)
+   }
+  }
+}
+</script>
+</body>
+</html>

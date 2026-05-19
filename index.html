@@ -4,28 +4,7 @@
 <title>Silver weight calculator</title>
 <link href="assets/thumbnails/1.png" rel="icon">
 <link href="https://fonts.googleapis.com/css?family=Luckiest Guy" rel="stylesheet">
-<style>
-body{
- text-align: center;
- font-size: 50px;
- background: #1f2f3f;
- font-family: Luckiest Guy;
- color: white;
-}
-.all{
- font-family: Luckiest Guy;
- color: white;
- background: #2c3f52;
- border: 2px solid #1d2b38;
- min-width: 400px;
- min-height: 100px;
- font-size: 30px;
-}
-
-.all:hover{
- transform: scale(1.05);
-}
-</style>
+<link href="assets/styling/style-main.css" rel="stylesheet">
 </head>
 <body>
 <h1>Silver Weight Calculator</h1>
@@ -61,55 +40,6 @@ body{
 <option value="PHP">Philippine Peso ₱</option>
 </select>
 <button onclick="site()" class="all">Check Value</button>
-<script>
- let sum = 0;
-function yes() {
- let pur = Number(document.getElementById("input1").value);
- let pur2 = Number(document.getElementById("input4").value);
- let purity;
- let weight = Number(document.getElementById("input2").value);
- let unit = document.getElementById("input3").value;
- if(pur2 > 0){
-  purity = pur2
-  }else{
-  purity = pur
-  }
-
- if(purity <= 0){
-  alert("Choose a purity")
-  }else{
-    if(purity > 1){
-     alert("Purity cannot be more than 100%")
-     }else{
-    if(weight <= 0){
-     alert("Enter a weight in " + unit)
-    }else{
-      sum = weight * purity
-     document.getElementById("output1").textContent = sum.toFixed(4) + " " + unit + " of  pure silver."
-   }
-  }
- }
-}
-function site(){
-let unit = document.getElementById("input3").value;
-let cur = document.getElementById("currency").value
-if(unit === 'g'){
-  let sumA = sum / 28.35
-  if (sumA === 0){
-   alert("Please calculate a weight")
-  }else{
-  let URL = "https://www.xe.com/en-ca/currencyconverter/convert/?Amount=" + sumA + "&From=XAG&To=" + cur
-  window.open(URL)
-  }
- }else{
-  if (sum === 0){
-   alert("Please calculate a weight")
-  }else{
-  let URL = "https://www.xe.com/en-ca/currencyconverter/convert/?Amount=" + sum + "&From=XAG&To=" + cur
-  window.open(URL)
-   }
-  }
-}
-</script>
+<script src="assets/scripts/script-main.js"></script>
 </body>
 </html>

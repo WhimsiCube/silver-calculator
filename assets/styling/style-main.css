@@ -1,0 +1,20 @@
+body{
+ text-align: center;
+ font-size: 50px;
+ background: #1f2f3f;
+ font-family: Luckiest Guy;
+ color: white;
+}
+.all{
+ font-family: Luckiest Guy;
+ color: white;
+ background: #2c3f52;
+ border: 2px solid #1d2b38;
+ min-width: 400px;
+ min-height: 100px;
+ font-size: 30px;
+}
+
+.all:hover{
+ transform: scale(1.05);
+}
